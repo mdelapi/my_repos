@@ -1,0 +1,8 @@
+# segredos
+.env
+*.pem
+*_key
+
+# repos clonados (cada um tem seu próprio git)
+/*/
+!/bin/
