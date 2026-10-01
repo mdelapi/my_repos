@@ -12,3 +12,4 @@ Uso rápido:
 Copie .env.example para .env e preencha. O .env nunca é versionado.
 
 Testado clonando o proprio repo.
+Teste a partir do clone.
