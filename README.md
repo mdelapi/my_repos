@@ -10,3 +10,5 @@ Uso rápido:
     source ./ghuse.sh <alias>           # carrega o ambiente do usuário
 
 Copie .env.example para .env e preencha. O .env nunca é versionado.
+
+Testado clonando o proprio repo.
