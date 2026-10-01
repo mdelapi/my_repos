@@ -30,6 +30,7 @@ Convenção do `.env`: `GH_<ALIAS>_USER`, `_NAME`, `_EMAIL`, `_SSH_KEY`, `_TOKEN
 
 - macOS com zsh (`source ghuse.sh` funcionou em zsh).
 - Linux com bash.
+- Máquina nova (macOS): bootstrap a partir do GitHub, sem copiar nada além do `.env`.
 - Repositórios usados: `sampleone` (clone, edição, push) e o próprio `my_repos` (auto-clone).
 
 ## 4. Testes realizados
@@ -48,6 +49,7 @@ Convenção do `.env`: `GH_<ALIAS>_USER`, `_NAME`, `_EMAIL`, `_SSH_KEY`, `_TOKEN
 | 10 | `sync.sh` com arquivo removido | OK |
 | 11 | `sync.sh` sem alterações responde "nada para commitar" e não cria commit vazio | OK |
 | 12 | Autor do commit atribuído à conta correta após usar e-mail verificado | OK |
+| 13 | Bootstrap em máquina nova (macOS): clonar o `my_repos`, copiar só o `.env`, `setup.sh` e `clone.sh` do `sampleone` | OK |
 
 Commits de referência:
 
@@ -124,6 +126,12 @@ git check-ignore -v docs/VALIDACAO.md    # aponta a linha /*/ do .gitignore
 echo '!/docs/' >> .gitignore
 ```
 Qualquer pasta nova na raiz que deva ser versionada precisa de uma linha `!/nome/`.
+
+### 5.10 Comentários com `#` no zsh interativo
+Ao colar comandos com comentários no zsh, o `#` não é tratado como comentário e o
+texto seguinte vira argumento (por exemplo, `grep: deve: No such file or directory`).
+Os resultados reais dos comandos não são afetados. Solução: `setopt interactivecomments`
+na sessão (ou no `~/.zshrc`), ou colar os comandos sem comentários.
 
 ## 6. Fluxo recomendado
 
