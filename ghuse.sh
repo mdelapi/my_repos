@@ -42,6 +42,13 @@ export GIT_COMMITTER_NAME="$GH_NAME"
 export GIT_AUTHOR_EMAIL="$GH_EMAIL"
 export GIT_COMMITTER_EMAIL="$GH_EMAIL"
 
+if [ -n "$GH_SSH_KEY" ]; then
+  if [ ! -f "$GH_SSH_KEY" ]; then
+    echo "[ghuse] AVISO: chave SSH nao encontrada ($GH_SSH_KEY); usando HTTPS"
+    GH_SSH_KEY=""
+  fi
+fi
+
 # autenticação: SSH (chave dedicada) e/ou token HTTPS
 unset GIT_SSH_COMMAND GIT_ASKPASS
 if [ -n "$GH_SSH_KEY" ]; then
