@@ -113,6 +113,18 @@ Solução: encadear com `&&` para parar no primeiro erro.
 ### 5.8 `sed -i` difere entre macOS e Linux
 No macOS é `sed -i ''`; no Linux, `sed -i`.
 
+### 5.9 Pasta `docs/` ignorada pelo `.gitignore`
+O `.gitignore` do projeto tem a regra `/*/`, que ignora toda pasta na raiz para
+deixar de fora os repositórios clonados (`<alias>/`). Por isso uma pasta nova como
+`docs/` não aparecia no `git status`, e a única exceção existente era `!/bin/`.
+Diagnóstico e solução:
+
+```bash
+git check-ignore -v docs/VALIDACAO.md    # aponta a linha /*/ do .gitignore
+echo '!/docs/' >> .gitignore
+```
+Qualquer pasta nova na raiz que deva ser versionada precisa de uma linha `!/nome/`.
+
 ## 6. Fluxo recomendado
 
 ```bash
